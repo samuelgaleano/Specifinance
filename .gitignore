@@ -1,0 +1,23 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+build/
+coverage/
+
+# Environment — nunca subir secretos reales
+.env
+.env.*
+!.env.example
+
+# Vercel (contiene tokens y build local)
+.vercel/
+
+# Claude Code / tooling local
+.claude/
+
+# OS / editor
+.DS_Store
+*.log
+*.local

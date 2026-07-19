@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;705;800&family=Inter:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-heading: "Plus Jakarta Sans", sans-serif;
+  
+  --color-deep-navy: #0F172A;
+  --color-muted-gold: #4F46E5;
+  --color-growth-green: #10B981;
+  --color-charcoal-text: #475569;
+  --color-surface-gray: #F8FAFC;
+  --color-border-subtle: #E2E8F0;
+  --color-background-soft: #F1F5F9;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: var(--font-sans);
+  background-color: var(--color-background-soft);
+  color: var(--color-deep-navy);
+}
+
+h1, h2, h3, h4, .font-heading {
+  font-family: var(--font-heading);
+  letter-spacing: -0.025em;
+}
+
+.growth-card {
+  background: #ffffff;
+  border: 1px solid var(--color-border-subtle);
+  border-radius: 0.75rem;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.growth-card:hover {
+  border-color: var(--color-muted-gold);
+  box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.08), 0 4px 6px -4px rgba(79, 70, 229, 0.08);
+  transform: translateY(-2px);
+}
+
+.boutique-shadow {
+  box-shadow: 0 8px 30px rgb(0 0 0 / 0.04);
+}
+
+
