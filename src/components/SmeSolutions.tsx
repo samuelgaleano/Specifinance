@@ -21,7 +21,7 @@ export default function SmeSolutions({ onSelectSmeNeed }: SmeSolutionsProps) {
   const pymeSolutions = [
     {
       id: 'restructuracion' as const,
-      icon: <Briefcase className="w-5 h-5 text-indigo-650" />,
+      icon: <Briefcase className="w-5 h-5 text-indigo-600" />,
       tag: 'Caja y Estática Financiera',
       title: '¿Buscas una Reestructuración Financiera Práctica?',
       pain: 'Tu flujo de caja está asfixiado, dependes de préstamos constantes o no logras identificar en qué canales o procesos se está evaporando el dinero semana tras semana.',
@@ -38,7 +38,7 @@ export default function SmeSolutions({ onSelectSmeNeed }: SmeSolutionsProps) {
     },
     {
       id: 'marca' as const,
-      icon: <Palette className="w-5 h-5 text-indigo-650" />,
+      icon: <Palette className="w-5 h-5 text-indigo-600" />,
       tag: 'Tracción y Valor Percibido',
       title: '¿Buscas una Identidad de Marca Digital Premium?',
       pain: 'Haces un trabajo excelente, pero tu presencia digital parece amateur o genérica. Te cuesta justificar tarifas premium y tus vendedores enfrentan objeciones recurrentes de precio.',
@@ -55,7 +55,7 @@ export default function SmeSolutions({ onSelectSmeNeed }: SmeSolutionsProps) {
     },
     {
       id: 'procesos' as const,
-      icon: <Cpu className="w-5 h-5 text-indigo-650" />,
+      icon: <Cpu className="w-5 h-5 text-indigo-600" />,
       tag: 'Soberanía de Operaciones',
       title: '¿Buscas una Implementación Correcta en tu Empresa?',
       pain: 'La compañía depende enteramente de que el dueño esté encima de cada departamento supervisando. Falta estandarización, la operación es ineficiente y no hay números claros.',
@@ -82,7 +82,7 @@ export default function SmeSolutions({ onSelectSmeNeed }: SmeSolutionsProps) {
             ⚡ Soluciones Prácticas para PyMEs
           </span>
           <h2 className="font-heading font-extrabold text-3xl md:text-4xl text-deep-navy leading-tight tracking-tight">
-            ¿Qué frente necesitas resolver <span className="text-indigo-650">primero</span>?
+            ¿Qué frente necesitas resolver <span className="text-indigo-600">primero</span>?
           </h2>
           <p className="text-charcoal-text text-sm md:text-base leading-relaxed">
             Elige tu reto principal y mira el plan de acción concreto que aplicamos. Al solicitarlo, dejamos tu diagnóstico preconfigurado para agilizar tu reserva.
@@ -121,7 +121,7 @@ export default function SmeSolutions({ onSelectSmeNeed }: SmeSolutionsProps) {
                     <span className="inline-block py-0.5 px-2.5 bg-indigo-50 text-indigo-700 text-[10px] font-bold uppercase rounded-md tracking-wider">
                       {sol.tag}
                     </span>
-                    <h3 className="font-heading font-extrabold text-2xl md:text-3.5xl text-deep-navy leading-tight">
+                    <h3 className="font-heading font-extrabold text-2xl md:text-4xl text-deep-navy leading-tight">
                       {sol.title}
                     </h3>
                   </div>
@@ -200,14 +200,8 @@ export default function SmeSolutions({ onSelectSmeNeed }: SmeSolutionsProps) {
 
         {/* Banner de cierre "mejor alternativa" — con la foto del equipo de fondo */}
         <div className="bg-gradient-to-br from-deep-navy to-slate-900 text-white rounded-2xl p-8 md:p-12 relative overflow-hidden border border-white/10 shadow-xl">
-          <img
-            alt=""
-            aria-hidden="true"
-            referrerPolicy="no-referrer"
-            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCkd4mYmQn6x39TzpTohCPdBd1XGg5tP8xLbl6SBHyrbodTVM7XUiA0CBXslFXxGCm_-qoZLu_8mwAyEnWRA0XCrFSbvkfJUZQjv2529DcpIG7QPbmURkv3kjOx4LiWVPug1xdEv8h6MxUc9z7euRQQxoKJZvoxFo-zdyUpdipSbSSjyjlrfYK-7SRQxUZkCNYqWAOo_jKS-lkwrzJP3f2sTuHXPWyWg9P2UsznX4pDfmsSMy4Brgtc6sJ6NJi_VGl5QhwTeSd8KdQ"
-            className="absolute inset-0 w-full h-full object-cover opacity-25 pointer-events-none"
-          />
-          <div className="absolute inset-0 bg-gradient-to-br from-deep-navy/90 via-deep-navy/85 to-slate-900/85 pointer-events-none" />
+          {/* Textura decorativa inline (sin dependencias externas). */}
+          <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/10 via-transparent to-slate-900/40 pointer-events-none" />
           <div className="absolute top-0 right-0 p-4 opacity-5 pointer-events-none">
             <HelpCircle className="w-48 h-48 text-white" />
           </div>

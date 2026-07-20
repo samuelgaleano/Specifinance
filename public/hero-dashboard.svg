@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 470" role="img" aria-label="Panel de control financiero de Specifinance con métricas de crecimiento">
+  <defs>
+    <linearGradient id="sfArea" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#4F46E5" stop-opacity="0.30"/>
+      <stop offset="100%" stop-color="#4F46E5" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="sfBar" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#6366F1"/>
+      <stop offset="100%" stop-color="#4F46E5"/>
+    </linearGradient>
+    <linearGradient id="sfBarGreen" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#34D399"/>
+      <stop offset="100%" stop-color="#10B981"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Canvas -->
+  <rect width="640" height="470" rx="18" fill="#F8FAFC"/>
+
+  <!-- Top bar -->
+  <circle cx="30" cy="32" r="5" fill="#CBD5E1"/>
+  <circle cx="48" cy="32" r="5" fill="#CBD5E1"/>
+  <circle cx="66" cy="32" r="5" fill="#CBD5E1"/>
+  <rect x="250" y="24" width="140" height="16" rx="8" fill="#E2E8F0"/>
+  <circle cx="608" cy="32" r="13" fill="#0F172A"/>
+  <text x="608" y="36" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="10" fill="#ffffff" font-weight="700">SF</text>
+
+  <!-- Main chart card -->
+  <rect x="20" y="58" width="420" height="248" rx="14" fill="#FFFFFF" stroke="#E2E8F0"/>
+  <text x="40" y="88" font-family="'Plus Jakarta Sans', Arial, sans-serif" font-size="14" fill="#0F172A" font-weight="700">Rentabilidad por línea · 2026</text>
+  <text x="40" y="106" font-family="Inter, Arial, sans-serif" font-size="11" fill="#64748B">EBITDA acumulado (datos en vivo)</text>
+
+  <!-- Gridlines -->
+  <line x1="48" y1="130" x2="416" y2="130" stroke="#EEF2F7"/>
+  <line x1="48" y1="176" x2="416" y2="176" stroke="#EEF2F7"/>
+  <line x1="48" y1="222" x2="416" y2="222" stroke="#EEF2F7"/>
+  <line x1="48" y1="268" x2="416" y2="268" stroke="#E2E8F0"/>
+
+  <!-- Area + line -->
+  <path d="M48 250 L110 236 L172 244 L234 198 L296 176 L358 138 L416 108 L416 268 L48 268 Z" fill="url(#sfArea)"/>
+  <path d="M48 250 L110 236 L172 244 L234 198 L296 176 L358 138 L416 108" fill="none" stroke="#4F46E5" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="48" cy="250" r="3.5" fill="#4F46E5"/>
+  <circle cx="110" cy="236" r="3.5" fill="#4F46E5"/>
+  <circle cx="172" cy="244" r="3.5" fill="#4F46E5"/>
+  <circle cx="234" cy="198" r="3.5" fill="#4F46E5"/>
+  <circle cx="296" cy="176" r="3.5" fill="#4F46E5"/>
+  <circle cx="358" cy="138" r="3.5" fill="#4F46E5"/>
+  <circle cx="416" cy="108" r="4.5" fill="#10B981" stroke="#ffffff" stroke-width="2"/>
+
+  <!-- KPI card: Flujo de caja -->
+  <rect x="456" y="58" width="164" height="118" rx="14" fill="#FFFFFF" stroke="#E2E8F0"/>
+  <text x="474" y="86" font-family="Inter, Arial, sans-serif" font-size="11" fill="#64748B" font-weight="600">Flujo de caja</text>
+  <text x="474" y="118" font-family="'Plus Jakarta Sans', Arial, sans-serif" font-size="26" fill="#0F172A" font-weight="800">$1.24M</text>
+  <rect x="474" y="132" width="128" height="7" rx="3.5" fill="#ECFDF5"/>
+  <rect x="474" y="132" width="96" height="7" rx="3.5" fill="#10B981"/>
+  <text x="474" y="158" font-family="Inter, Arial, sans-serif" font-size="10" fill="#10B981" font-weight="700">▲ +12.6% vs. mes anterior</text>
+
+  <!-- KPI card: Margen -->
+  <rect x="456" y="188" width="164" height="118" rx="14" fill="#0F172A"/>
+  <text x="474" y="216" font-family="Inter, Arial, sans-serif" font-size="11" fill="#94A3B8" font-weight="600">Margen neto</text>
+  <text x="474" y="248" font-family="'Plus Jakarta Sans', Arial, sans-serif" font-size="26" fill="#ffffff" font-weight="800">18.4%</text>
+  <rect x="474" y="262" width="128" height="7" rx="3.5" fill="#1E293B"/>
+  <rect x="474" y="262" width="78" height="7" rx="3.5" fill="#4F46E5"/>
+  <text x="474" y="288" font-family="Inter, Arial, sans-serif" font-size="10" fill="#818CF8" font-weight="700">Objetivo trimestral: 20%</text>
+
+  <!-- Bottom bar-chart card -->
+  <rect x="20" y="322" width="600" height="128" rx="14" fill="#FFFFFF" stroke="#E2E8F0"/>
+  <text x="40" y="350" font-family="'Plus Jakarta Sans', Arial, sans-serif" font-size="13" fill="#0F172A" font-weight="700">Ingresos vs. costos por trimestre</text>
+
+  <!-- legend -->
+  <rect x="470" y="340" width="10" height="10" rx="2" fill="url(#sfBar)"/>
+  <text x="486" y="349" font-family="Inter, Arial, sans-serif" font-size="10" fill="#64748B">Ingresos</text>
+  <rect x="548" y="340" width="10" height="10" rx="2" fill="url(#sfBarGreen)"/>
+  <text x="564" y="349" font-family="Inter, Arial, sans-serif" font-size="10" fill="#64748B">Margen</text>
+
+  <!-- baseline -->
+  <line x1="40" y1="430" x2="600" y2="430" stroke="#E2E8F0"/>
+
+  <!-- bars (income = indigo, margin = green) -->
+  <rect x="70"  y="392" width="20" height="38" rx="4" fill="url(#sfBar)"/>
+  <rect x="94"  y="406" width="20" height="24" rx="4" fill="url(#sfBarGreen)"/>
+  <rect x="170" y="380" width="20" height="50" rx="4" fill="url(#sfBar)"/>
+  <rect x="194" y="400" width="20" height="30" rx="4" fill="url(#sfBarGreen)"/>
+  <rect x="270" y="372" width="20" height="58" rx="4" fill="url(#sfBar)"/>
+  <rect x="294" y="396" width="20" height="34" rx="4" fill="url(#sfBarGreen)"/>
+  <rect x="370" y="362" width="20" height="68" rx="4" fill="url(#sfBar)"/>
+  <rect x="394" y="388" width="20" height="42" rx="4" fill="url(#sfBarGreen)"/>
+  <rect x="470" y="368" width="20" height="62" rx="4" fill="url(#sfBar)" opacity="0.55"/>
+  <rect x="494" y="382" width="20" height="48" rx="4" fill="url(#sfBarGreen)" opacity="0.55"/>
+</svg>

@@ -46,6 +46,10 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     // ------------------------------------------------------------------
     if (req.method === 'POST') {
       const b = parseBody(req);
+
+      // Honeypot anti-spam: si el campo trampa llega con contenido, es un bot → se ignora en silencio.
+      const isSpam = str(b.honeypot ?? b.company_website, 200).length > 0;
+
       const fullName = str(b.fullName, 160);
       const email = str(b.email, 200);
       const phone = str(b.phone, 60);
@@ -77,9 +81,9 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         estimatedRoi: Number.isFinite(b.estimatedRoi) ? Number(b.estimatedRoi) : est.roi,
       };
 
-      await sheetsCreateLead(lead);
+      if (!isSpam) await sheetsCreateLead(lead);
 
-      return res.status(201).json({ ok: true, lead, persisted: sheetsReady, dbConnected: sheetsReady });
+      return res.status(201).json({ ok: true, lead, persisted: sheetsReady && !isSpam, dbConnected: sheetsReady });
     }
 
     // ------------------------------------------------------------------

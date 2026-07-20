@@ -623,7 +623,7 @@ async function sendDiagnosticEmail() {
                         </div>
                         <div>
                           <span className="text-[9px] text-charcoal-text font-mono block">E-MAIL INSTITUCIONAL</span>
-                          <span className="font-mono text-indigo-650 block truncate" title={selectedLead.email}>{selectedLead.email}</span>
+                          <span className="font-mono text-indigo-600 block truncate" title={selectedLead.email}>{selectedLead.email}</span>
                         </div>
                         <div>
                           <span className="text-[9px] text-charcoal-text font-mono block">TELÉFONO</span>

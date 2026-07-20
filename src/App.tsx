@@ -47,6 +47,8 @@ export default function App() {
   const [formService, setFormService] = useState('Full Growth Partner');
   const [formNeeds, setFormNeeds] = useState('');
   const [formAgreed, setFormAgreed] = useState(false);
+  // Honeypot anti-spam (invisible para humanos).
+  const [formHoneypot, setFormHoneypot] = useState('');
 
   // Success indicator for the main contact form
   const [formSubmitted, setFormSubmitted] = useState(false);
@@ -158,6 +160,7 @@ export default function App() {
       companySize: formSize,
       serviceOfInterest: formService,
       needsDescription: formNeeds,
+      honeypot: formHoneypot,
     });
 
     setSubmitting(false);
@@ -251,6 +254,8 @@ export default function App() {
                     : 'text-slate-300 hover:text-deep-navy hover:bg-slate-50 border-transparent hover:border-slate-200 opacity-20 hover:opacity-100'
                 }`}
                 id="nav-crm-toggle-lock"
+                aria-label={adminMode ? 'Salir del panel de administración' : 'Acceso al panel de administración'}
+                title={adminMode ? 'Salir del panel de administración' : 'Acceso al panel de administración'}
              >
                <Lock className="w-3.5 h-3.5" />
              </button>
@@ -268,6 +273,8 @@ export default function App() {
               type="button" 
               className="md:hidden text-deep-navy p-1"
               id="btn-mobile-menu"
+              aria-label="Abrir menú de navegación"
+              aria-expanded={mobileMenuOpen}
             >
               <Menu className="w-6 h-6" />
             </button>
@@ -391,7 +398,7 @@ export default function App() {
                     setAdminMode(false);
                     setAdminAuthError('');
                   }}
-                  className="text-indigo-650 hover:text-indigo-800 font-semibold text-xs text-center"
+                  className="text-indigo-600 hover:text-indigo-800 font-semibold text-xs text-center"
                 >
                   ← Volver a la Landing Page Pública
                 </button>
@@ -406,8 +413,8 @@ export default function App() {
               <div className="bg-amber-50 border-l-4 border-amber-500 p-4 rounded text-xs text-amber-900 leading-normal flex items-start gap-3">
                 <AlertTriangle className="w-5 h-5 flex-shrink-0 text-amber-600 mt-0.5" />
                 <div>
-                  <strong className="block font-semibold">Modo demostración — base de datos no conectada.</strong>
-                  Los leads mostrados son datos de ejemplo y las solicitudes nuevas no se guardan. Conecta una base de datos <strong>Neon Postgres</strong> desde Vercel (pestaña Storage) para registrar clientes reales de forma permanente.
+                  <strong className="block font-semibold">Modo demostración — almacenamiento no conectado.</strong>
+                  Los leads mostrados son datos de ejemplo y las solicitudes nuevas no se guardan. Configura la variable <strong>SHEETS_WEBHOOK_URL</strong> en Vercel (Google Sheets vía Apps Script) para registrar clientes reales de forma permanente.
                 </div>
               </div>
             ) : (
@@ -507,11 +514,12 @@ export default function App() {
               {/* Graphic dashboard preview */}
               <motion.div variants={fadeInUp} className="relative">
                 <div className="bg-white rounded-xl boutique-shadow border border-border-subtle p-3 overflow-hidden transform hover:-translate-y-2 transition-transform duration-500 hover:shadow-2xl hover:border-indigo-200">
-                  <img 
-                    alt="Financial Dashboard" 
-                    className="w-full h-auto rounded-lg shadow-sm" 
-                    referrerPolicy="no-referrer"
-                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDX6w3wgJQFvvKPXhF0dxFHuPKeW4h5fgZIUt3ePTxgo10HZ1NjjchwE_gv_OeP_H4-Ch9WC_yHkWa0alJeb4uxwI1HlzY9hUOpvqcPuESXvYHQkgMRn_R8kE9ETw0exq4689SErSRxlJo2B0y_NuRyZ_4MQ9rk8h110-IECkBgqStgaVr3FGWNds3SOYD6VctfN1W-dQih2w_ypPXz2HStz_lVm6nX-jnSBNwKoGrQf51Owv3thEc5HUmDIld4lCXZB8yPuXCYs5o" 
+                  <img
+                    alt="Panel de control financiero de Specifinance con métricas de EBITDA, flujo de caja y crecimiento rentable"
+                    className="w-full h-auto rounded-lg shadow-sm"
+                    width={640}
+                    height={470}
+                    src="/hero-dashboard.svg"
                   />
                 </div>
                 {/* Floating Card */}
@@ -553,8 +561,8 @@ export default function App() {
                     ✅ ¿Qué Hacemos?
                   </span>
 
-                  <h2 className="font-heading font-extrabold text-3.5xl md:text-5xl text-deep-navy leading-tight tracking-tight">
-                    Transformamos información financiera y comercial en <span className="text-indigo-650">crecimiento rentable</span>.
+                  <h2 className="font-heading font-extrabold text-4xl md:text-5xl text-deep-navy leading-tight tracking-tight">
+                    Transformamos información financiera y comercial en <span className="text-indigo-600">crecimiento rentable</span>.
                   </h2>
 
                   <p className="text-charcoal-text text-sm md:text-base leading-relaxed">
@@ -747,7 +755,7 @@ export default function App() {
                     <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
                       {/* Antes: Red alert cards */}
                       <div className="bg-red-50/50 border border-red-100 p-5 rounded-xl space-y-3">
-                        <span className="inline-block px-2 py-0.5 bg-red-1050/10 text-red-700 text-[9px] font-bold uppercase rounded">
+                        <span className="inline-block px-2 py-0.5 bg-red-100 text-red-700 text-[9px] font-bold uppercase rounded">
                           Gestión Tradicional
                         </span>
                         <ul className="space-y-2 text-xs text-slate-700 leading-relaxed">
@@ -798,7 +806,7 @@ export default function App() {
                     {/* Left: Leadership & Core Scope */}
                     <div className="lg:col-span-5 space-y-6">
                       <div className="flex gap-4 items-center p-4 bg-white rounded-xl border border-border-subtle shadow-sm">
-                        <div className="w-12 h-12 rounded-full bg-pink-1050/10 flex items-center justify-center text-pink-600 font-bold text-lg border border-pink-200">
+                        <div className="w-12 h-12 rounded-full bg-pink-100 flex items-center justify-center text-pink-600 font-bold text-lg border border-pink-200">
                           SG
                         </div>
                         <div>
@@ -836,7 +844,7 @@ export default function App() {
                     <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
                       {/* Antes: Red alert cards */}
                       <div className="bg-red-50/50 border border-red-100 p-5 rounded-xl space-y-3">
-                        <span className="inline-block px-2 py-0.5 bg-red-1050/10 text-red-700 text-[9px] font-bold uppercase rounded">
+                        <span className="inline-block px-2 py-0.5 bg-red-100 text-red-700 text-[9px] font-bold uppercase rounded">
                           Marketing Común
                         </span>
                         <ul className="space-y-2 text-xs text-slate-700 leading-relaxed">
@@ -1291,28 +1299,23 @@ export default function App() {
                   
                   /* STANDARD PUBLIC DIAGNOSTIC REGISTERS FORM */
                   <form onSubmit={handleSubmitDiagnostic} className="bg-white text-deep-navy p-6 md:p-10 rounded-xl space-y-6 shadow-2xl border border-border-subtle">
+
+                    {/* Honeypot anti-spam: invisible para humanos; si un bot lo llena, se descarta. */}
+                    <input
+                      type="text"
+                      name="company_website"
+                      tabIndex={-1}
+                      autoComplete="off"
+                      value={formHoneypot}
+                      onChange={(e) => setFormHoneypot(e.target.value)}
+                      className="hidden"
+                      aria-hidden="true"
+                    />
                     
-                    <div className="border-b border-slate-100 pb-3 flex justify-between items-center flex-wrap gap-2">
+                    <div className="border-b border-slate-100 pb-3">
                       <h3 className="font-heading font-extrabold text-lg text-deep-navy">
                         Solicitud de Diagnóstico Financiero
                       </h3>
-                      <button
-                        type="button"
-                        onClick={() => {
-                          // Bypass / quick fill for testing!
-                          setFormName('Sofía Restrepo');
-                          setFormRole('Directora de Crecimiento');
-                          setFormCompany('Restrepo & Co. SAS');
-                          setFormEmail('sofia@restrepoco.com');
-                          setFormPhone('+57 301 999 8888');
-                          setFormCity('Bogotá - Textil');
-                          setFormNeeds('Problemas graves de control presupuestal mensual y fugas operativas.');
-                        }}
-                        className="text-[10px] text-deep-navy hover:underline italic"
-                        title="Rellenar campos con datos ficticios válidos"
-                      >
-                        [Autorellenar Test]
-                      </button>
                     </div>
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -1568,20 +1571,11 @@ export default function App() {
 
         <div className="max-w-7xl mx-auto px-6 md:px-12 mt-12 pt-6 border-t border-white/5 flex flex-col sm:flex-row justify-between items-center gap-4 text-[11px] text-white/40">
           <span>
-            © 2026 Specifinance. Todos los derechos reservados. Consultoría Boutique de Excelencia.
+            © 2026 Specifinance S.A.S. Todos los derechos reservados. Consultoría Boutique de Excelencia.
           </span>
-          <div className="flex gap-4">
-            <button 
-              type="button"
-              onClick={() => {
-                setAdminMode(!adminMode);
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-              }}
-              className="text-muted-gold hover:underline"
-            >
-              Toggle Admin Backoffice Panel
-            </button>
-          </div>
+          <span className="flex items-center gap-1.5">
+            <MapPin className="w-3 h-3" /> Bogotá D.C., Colombia
+          </span>
         </div>
       </footer>
 

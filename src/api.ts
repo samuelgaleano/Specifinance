@@ -42,6 +42,8 @@ export interface CreateLeadInput {
   needsDescription?: string;
   quotedPrice?: number;
   estimatedRoi?: number;
+  /** Campo trampa anti-spam: siempre vacío en envíos humanos. */
+  honeypot?: string;
 }
 
 export interface ApiResult<T> {

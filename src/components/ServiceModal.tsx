@@ -119,9 +119,24 @@ export default function ServiceModal({ isOpen, serviceId, onClose, onSelectServi
     };
   }, [isOpen]);
 
+  // Cerrar con la tecla Escape (accesibilidad / UX).
+  useEffect(() => {
+    if (!isOpen) return;
+    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose(); };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [isOpen, onClose]);
+
   if (!isOpen || !serviceId || !serviceData[serviceId]) return null;
 
   const data = serviceData[serviceId];
+
+  // Mapa estático de clases por color (Tailwind no detecta clases dinámicas `bg-${x}-50`).
+  const iconColorClasses: Record<string, string> = {
+    indigo: 'bg-indigo-50 border-indigo-100',
+    green: 'bg-green-50 border-green-100',
+    slate: 'bg-slate-100 border-slate-200',
+  };
 
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6" aria-labelledby="modal-title" role="dialog" aria-modal="true">
@@ -137,7 +152,7 @@ export default function ServiceModal({ isOpen, serviceId, onClose, onSelectServi
         {/* Header */}
         <div className="sticky top-0 bg-white/95 backdrop-blur-sm px-6 py-5 border-b border-border-subtle flex justify-between items-start z-20">
           <div className="flex gap-4 items-center">
-            <div className={`w-12 h-12 rounded-xl bg-${data.color}-50 flex items-center justify-center shrink-0 border border-${data.color}-100 shadow-sm`}>
+            <div className={`w-12 h-12 rounded-xl flex items-center justify-center shrink-0 border shadow-sm ${iconColorClasses[data.color] || 'bg-slate-50 border-slate-200'}`}>
               {data.icon}
             </div>
             <div>
